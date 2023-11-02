@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "mapbox-gl/dist/mapbox-gl.css";
+import "./style/global.css";
+import BaseMap from "./components/Map/BaseMap";
+import { csv } from "d3-request";
+import { useEffect, useState } from "react";
+
+const DATA_URL =
+  "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv"; // eslint-disable-lines
 
 function App() {
+  const [csvData, setCsvData] = useState([]);
+
+  useEffect(() => {
+    csv(DATA_URL, (error, response) => {
+      if (!error) {
+        const data = response.map((d) => [Number(d.lng), Number(d.lat)]);
+        setCsvData(data);
+      }
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="map-container">
+      <BaseMap data={csvData} />;
     </div>
   );
 }
