@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@deck.gl/aggregation-layers": "^8.9.32",
-    "@deck.gl/core": "^8.9.32",
-    "@deck.gl/geo-layers": "^8.9.32",
-    "@deck.gl/layers": "^8.9.32",
+    "@deck.gl/extensions": "^8.9.32",
     "@deck.gl/mapbox": "^8.9.32",
+    "@deck.gl/mesh-layers": "^8.9.32",
     "@deck.gl/react": "^8.9.32",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -46,5 +44,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@deck.gl/aggregation-layers": "^8.9.32",
+    "@deck.gl/core": "^8.9.32",
+    "@deck.gl/geo-layers": "^8.9.32",
+    "@deck.gl/layers": "^8.9.32"
   }
 }
