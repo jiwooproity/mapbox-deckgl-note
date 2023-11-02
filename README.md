@@ -22,6 +22,10 @@ https://www.mapbox.com/
 
 deck.gl은 위도와 경도 ( coordinates ), 위치 기반 데이터를 통해 데이터 시각화를 할 수 있습니다.<br/>
 @deck.gl 라이브러리와 react를 연동하여 mapbox 맵 데이터 위에 레이어를 덧씌워 longitude, latitude 데이터를 가지고 위치를 매핑하고 폴리곤, 헥사곤 쉐잎을 렌더링할 수 있습니다.<br/>
+
+참고한 deck.gl 레이어 샘플<br/>
+https://deck.gl/examples
+
 ![image](https://github.com/jiwooproity/mapbox-deckgl-note/assets/58384366/9f24fed3-fa12-4d81-b4c2-858e007c512c)
 
 ## 육각형 계층의 인덱스를 구하는 방법
