@@ -107,7 +107,7 @@ const HexagonMap = () => {
   const geojsonLayer = new GeoJsonLayer({
     id: "building",
     data: buildings,
-    getElevation: (f) => f.properties.height || 20,
+    getElevation: () => Math.floor(Math.random() * (50 - 20) + 20),
     getPointRadius: 4,
     getLineWidth: 0,
     getFillColor: [160, 180, 180, 500],
