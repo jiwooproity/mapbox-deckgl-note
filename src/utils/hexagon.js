@@ -15,6 +15,7 @@ const latLngToHexagon = ({ id, data }) => {
       [254, 173, 84],
       [209, 55, 78],
     ],
+    opacity: 0.1,
     coverage: 1,
     elevationRange: [0, 2],
     elevationScale: 20,

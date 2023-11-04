@@ -23,6 +23,8 @@ import { pathToLayer } from "../../utils/path";
 import { latLngToIcon } from "../../utils/marker";
 import { TripsLayer } from "@deck.gl/geo-layers";
 
+import { onClipCoordinates } from "../../utils/clipCoordinates";
+
 function BaseMap() {
   const ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
   const [viewState, setViewState] = useState({
@@ -93,10 +95,6 @@ function BaseMap() {
     iconLayer,
     tripsLayer,
   ];
-
-  const onClipCoordinates = async ({ coordinate }) => {
-    await navigator.clipboard.writeText(`[${coordinate}],`);
-  };
 
   useEffect(() => {
     const container = document.getElementById("deckgl-wrapper");

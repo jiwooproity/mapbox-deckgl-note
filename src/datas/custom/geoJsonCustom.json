@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "My Company : Dejay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.91767337166205, 37.55163113349283]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "My House"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.91922802280004, 37.55226011879821]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "next street"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [126.91778677056972, 37.55278178626305]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dejay",
+        "station": "My Company : Dejay"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [126.91923438038458, 37.5523674078022],
+            [126.91919484573775, 37.55220148551941],
+            [126.91908276802566, 37.55230899849748],
+            [126.91920541756096, 37.552386252649775]
+          ]
+        ]
+      }
+    }
+  ]
+}
