@@ -4,7 +4,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Dejay Area"
+        "name": "Dejay Area",
+        "height": 30
       },
       "geometry": {
         "type": "Point",
@@ -16,7 +17,7 @@
       "properties": {
         "name": "Dejay",
         "station": "Dejay Area",
-        "height": 30
+        "height": 20
       },
       "geometry": {
         "type": "Polygon",
@@ -33,7 +34,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "multi"
+        "name": "multi",
+        "height": 27
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -60,7 +62,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "another"
+        "name": "another",
+        "height": 36
       },
       "geometry": {
         "type": "Polygon",
@@ -79,7 +82,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 30
       },
       "geometry": {
         "type": "Polygon",
@@ -96,7 +100,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 40
       },
       "geometry": {
         "type": "Polygon",
@@ -113,7 +118,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 32
       },
       "geometry": {
         "type": "Polygon",
@@ -130,7 +136,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 18
       },
       "geometry": {
         "type": "Polygon",
@@ -153,7 +160,26 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 24
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [126.91659056740667, 37.55123918829947],
+            [126.91710392651804, 37.55082912119537],
+            [126.91678111900482, 37.55055885739375],
+            [126.91627496559774, 37.55098047555057]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "asdasd",
+        "height": 33
       },
       "geometry": {
         "type": "Polygon",
@@ -170,7 +196,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 46
       },
       "geometry": {
         "type": "Polygon",
@@ -187,7 +214,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 37
       },
       "geometry": {
         "type": "Polygon",
@@ -204,7 +232,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 39
       },
       "geometry": {
         "type": "Polygon",
@@ -223,7 +252,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 42
       },
       "geometry": {
         "type": "Polygon",
@@ -240,7 +270,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 45
       },
       "geometry": {
         "type": "Polygon",
@@ -261,7 +292,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 27
       },
       "geometry": {
         "type": "Polygon",
@@ -278,7 +310,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 29
       },
       "geometry": {
         "type": "Polygon",
@@ -295,7 +328,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 42
       },
       "geometry": {
         "type": "Polygon",
@@ -314,7 +348,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 40
       },
       "geometry": {
         "type": "Polygon",
@@ -333,7 +368,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 20
       },
       "geometry": {
         "type": "Polygon",
@@ -352,7 +388,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 40
       },
       "geometry": {
         "type": "Polygon",
@@ -369,7 +406,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 50
       },
       "geometry": {
         "type": "Polygon",
@@ -388,7 +426,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 50
       },
       "geometry": {
         "type": "Polygon",
@@ -409,7 +448,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 41
       },
       "geometry": {
         "type": "Polygon",
@@ -431,7 +471,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 48
       },
       "geometry": {
         "type": "Polygon",
@@ -448,7 +489,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 38
       },
       "geometry": {
         "type": "Polygon",
@@ -465,7 +507,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 42
       },
       "geometry": {
         "type": "Polygon",
@@ -482,7 +525,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 30
       },
       "geometry": {
         "type": "Polygon",
@@ -500,7 +544,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 40
       },
       "geometry": {
         "type": "Polygon",
@@ -522,7 +567,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "asdasd"
+        "name": "asdasd",
+        "height": 50
       },
       "geometry": {
         "type": "Polygon",

@@ -33,7 +33,7 @@ const HexagonMap = () => {
   const [makeGeoJson, setMakeGeoJson] = useState({});
 
   const animate = () => {
-    setTime((state) => (state + 1) % 2000);
+    setTime((state) => (state + 1) % 1800);
     animation.id = requestAnimationFrame(animate);
   };
 
@@ -69,7 +69,7 @@ const HexagonMap = () => {
         type: "Feature",
         properties: {
           hex: hex,
-          color: coordi.warning ? "#E14C48" : "#e3e3e3",
+          color: coordi.warning ? "#E14C48" : "#c5c5c5",
           opacity: coordi.warning ? 0.4 : 0.2,
         },
         geometry: {
@@ -79,6 +79,27 @@ const HexagonMap = () => {
       };
     });
 
+    const diskTarget = [126.92015474691122, 37.55117659169174];
+    const diskHex = h3.latLngToCell(diskTarget[1], diskTarget[0], 11);
+    const h3GridDisk = h3.gridDisk(diskHex, 1);
+    const latLngGrid = h3GridDisk.map((hex) => {
+      return h3.cellToBoundary(hex).map((i) => [i[1], i[0]]);
+    });
+
+    latLngGrid.forEach((grid, index) => {
+      coordinateConvert.push({
+        type: "Feature",
+        properties: {
+          hex: "",
+          color: index === 0 ? "#E14C48" : "#c5c5c5",
+          opacity: index === 0 ? 0.4 : 0.2,
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [grid],
+        },
+      });
+    });
     setWarningMark(warningPoint);
     setHexagonArr(coordinateConvert);
   };
@@ -93,7 +114,7 @@ const HexagonMap = () => {
     // getIcon: return a string
 
     iconMapping: {
-      marker: { x: 0, y: 0, anchorY: 500, width: 128, height: 128, mask: true },
+      marker: { x: 0, y: 0, anchorY: 128, width: 128, height: 128, mask: true },
     },
     getIcon: (d) => "marker",
     iconAtlas:
@@ -107,10 +128,10 @@ const HexagonMap = () => {
   const geojsonLayer = new GeoJsonLayer({
     id: "building",
     data: buildings,
-    getElevation: () => Math.floor(Math.random() * (50 - 20) + 20),
+    getElevation: (f) => f.properties.height || 20,
     getPointRadius: 4,
     getLineWidth: 0,
-    getFillColor: [160, 180, 180, 500],
+    getFillColor: [160, 180, 180, 210],
     getText: showPopup,
     pointType: "text",
     extruded: true,
@@ -124,7 +145,8 @@ const HexagonMap = () => {
     getColor: (f) => f.color,
     currentTime: time,
     trailLength: 180,
-    widthMinPixels: 1,
+    fadeTrail: true,
+    widthMinPixels: 2,
     shadowEnabled: false,
     rounded: true,
   });
@@ -135,23 +157,20 @@ const HexagonMap = () => {
   }, [animation]);
 
   useEffect(() => {
-    const element = document.getElementById("deckgl-wrapper");
-    element.addEventListener("contextmenu", (e) => {
+    const init = (e) => {
       e.preventDefault();
       setCollection([]);
       setMakeGeoJson({});
-    });
-    return () =>
-      element.removeEventListener("contextmenu", (e) => {
-        e.preventDefault();
-        setCollection([]);
-        setMakeGeoJson({});
-      });
+    };
+
+    const element = document.getElementById("deckgl-wrapper");
+    element.addEventListener("contextmenu", init);
+    return () => element.removeEventListener("contextmenu", init);
   }, []);
 
   useEffect(() => {
-    console.log(makeGeoJson);
-  }, [makeGeoJson]);
+    console.log(collection);
+  }, [collection]);
 
   return (
     <DeckGL
@@ -177,15 +196,13 @@ const HexagonMap = () => {
           }}
         >
           <Layer
-            {...{
-              id: "polygon-layer",
-              type: "fill",
-              paint: {
-                "fill-antialias": true,
-                "fill-outline-color": "rgb(115, 115, 115)",
-                "fill-color": ["get", "color"],
-                "fill-opacity": ["get", "opacity"],
-              },
+            id="polygon-layer"
+            type="fill"
+            paint={{
+              "fill-antialias": true,
+              "fill-outline-color": "rgb(86, 86, 86)",
+              "fill-color": ["get", "color"],
+              "fill-opacity": ["get", "opacity"],
             }}
           />
         </Source>
