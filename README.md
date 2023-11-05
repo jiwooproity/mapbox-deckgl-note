@@ -27,6 +27,8 @@ deck.gl은 위도와 경도 ( coordinates ), 위치 기반 데이터를 통해 �
 https://deck.gl/examples
 
 ![image](https://github.com/jiwooproity/mapbox-deckgl-note/assets/58384366/9f24fed3-fa12-4d81-b4c2-858e007c512c)
+![image](https://github.com/jiwooproity/mapbox-deckgl-note/assets/58384366/7f8fc8bc-d14a-45b9-aca1-073bf3603311)
+
 
 ## 육각형 계층의 인덱스를 구하는 방법
 
