@@ -20,17 +20,26 @@ https://www.mapbox.com/
 
 ## deck.gl
 
-deck.gl은 위도와 경도 ( coordinates ), 위치 기반 데이터를 통해 데이터 시각화를 할 수 있습니다.<br/>
-@deck.gl 라이브러리와 react를 연동하여 mapbox 맵 데이터 위에 레이어를 덧씌워 longitude, latitude 데이터를 가지고 위치를 매핑하고 폴리곤, 헥사곤 쉐잎을 렌더링할 수 있습니다.<br/>
+맵 좌표계 EPSG 4326
+WebGL 기반의 대용량 데이터의 시각화 분석을 돕는 라이브러리입니다.
 
-참고한 deck.gl 레이어 샘플<br/>
+유동 경로 TricksLayer
+path 좌표를 따라 실제 인구 유동 경로, 차량 이동 경로 등 다양한 데이터 시각화 시도가 가능합니다.
+
+GeoJson
+Building ( Polygon / MultiPolygon ), Line, Text Tooltip, Point 등 건물, 선, 포인트 강조 다양한 시도를 할 수 있습니다.
+국가공간정보포털에서 GIS 맵 데이터, 지표 데이터 등 Shape 파일을 GeoJson으로 변환하여 데이터를 시각화 할 수 있습니다.
+단, 사용하는 BaseMap에 대한 좌표계와 동일한 조건을 가지고 변환 후 시각화를 진행해야 합니다.
+
 https://deck.gl/examples
 
 ![image](https://github.com/jiwooproity/mapbox-deckgl-note/assets/58384366/9f24fed3-fa12-4d81-b4c2-858e007c512c)
 ![image](https://github.com/jiwooproity/mapbox-deckgl-note/assets/58384366/7f8fc8bc-d14a-45b9-aca1-073bf3603311)
 
 
-## 육각형 계층의 인덱스를 구하는 방법
+## 프로젝트 구성 전 목표
 
-육각형 계층의 인덱스 값을 구하기 위해 사용한 라이브러리는 Uber h3-js를 활용하였습니다.<br/>
-h3-js를 통해 longitude, latitude 중심 좌표를 기준으로 육각형 모양의 좌표 값을 구할 수 있습니다. ( radius 값도 포함하여 Scale도 조정 가능 )
+좌표계에 대한 이해
+GeoJson 형성에 필요한 Format 형태 파악
+map-gl, deck.gl 레이어 설정을 통한 맵 데이터 시각화 방법
+유동 경로 수단 표시를 위한 구분 방법 ( 버스, 지하철, 도보 등 .. )
