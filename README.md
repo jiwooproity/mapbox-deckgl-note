@@ -20,15 +20,15 @@ https://www.mapbox.com/
 
 ## deck.gl
 
-맵 좌표계 EPSG 4326
+**맵 좌표계 EPSG 4326**</br>
 WebGL 기반의 대용량 데이터의 시각화 분석을 돕는 라이브러리입니다.
 
-유동 경로 TricksLayer
+**유동 경로 TricksLayer**</br>
 path 좌표를 따라 실제 인구 유동 경로, 차량 이동 경로 등 다양한 데이터 시각화 시도가 가능합니다.
 
-GeoJson
-Building ( Polygon / MultiPolygon ), Line, Text Tooltip, Point 등 건물, 선, 포인트 강조 다양한 시도를 할 수 있습니다.
-국가공간정보포털에서 GIS 맵 데이터, 지표 데이터 등 Shape 파일을 GeoJson으로 변환하여 데이터를 시각화 할 수 있습니다.
+**GeoJsonLayer**</br>
+Building ( Polygon / MultiPolygon ), Line, Text Tooltip, Point 등 건물, 선, 포인트 강조 다양한 시도를 할 수 있습니다.</br>
+국가공간정보포털에서 GIS 맵 데이터, 지표 데이터 등 Shape 파일을 GeoJson으로 변환하여 데이터를 시각화 할 수 있습니다.</br>
 단, 사용하는 BaseMap에 대한 좌표계와 동일한 조건을 가지고 변환 후 시각화를 진행해야 합니다.
 
 https://deck.gl/examples
@@ -39,7 +39,7 @@ https://deck.gl/examples
 
 ## 프로젝트 구성 전 목표
 
-좌표계에 대한 이해
-GeoJson 형성에 필요한 Format 형태 파악
-map-gl, deck.gl 레이어 설정을 통한 맵 데이터 시각화 방법
+좌표계에 대한 이해</br>
+GeoJson 형성에 필요한 Format 형태 파악</br>
+map-gl, deck.gl 레이어 설정을 통한 맵 데이터 시각화 방법</br>
 유동 경로 수단 표시를 위한 구분 방법 ( 버스, 지하철, 도보 등 .. )
