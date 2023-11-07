@@ -4,6 +4,7 @@ import { Layer, Map, Source } from "react-map-gl";
 import { DeckGL } from "@deck.gl/react";
 import { GeoJsonLayer, IconLayer } from "@deck.gl/layers";
 import { H3HexagonLayer, TripsLayer } from "@deck.gl/geo-layers";
+import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 
 // import {
 //   onClipCoordinates,
@@ -15,6 +16,7 @@ import trips from "../../datas/custom/tripsCustomJson.json";
 import coordinatesJson from "../../datas/custom/coordinatesJson.json";
 import roadJson from "../../datas/custom/roadToLineJson.json";
 import korea from "../../datas/custom/korea.json";
+import heatmap from "../../datas/sample/heatmap.json";
 
 const h3 = require("h3-js");
 
@@ -160,7 +162,7 @@ const HexagonMap = () => {
       if (coordi.people >= 100) {
         warningPoint.push({
           coordinates: [h3.cellToLatLng(hex)[1], h3.cellToLatLng(hex)[0]],
-          message: `Warning ${coordi.warning}`,
+          message: `Warning ${coordi.people}`,
         });
       }
 
@@ -224,6 +226,14 @@ const HexagonMap = () => {
     getColor: (d) => [255, 0, 0],
   });
 
+  const heatmapLayer = new HeatmapLayer({
+    id: "heatmap-layer",
+    data: heatmap,
+    getPosition: (f) => f.coordinates,
+    getWeight: (f) => f.count,
+    aggregation: "SUM",
+  });
+
   const hexagonLayer = new H3HexagonLayer({
     id: "h3-hexagon-layer",
     data: h3Hexagon,
@@ -245,6 +255,7 @@ const HexagonMap = () => {
     getText: showPopup,
     pointType: "text",
     extruded: true,
+    pickable: true,
   });
 
   const seongnamLayer = new GeoJsonLayer({
@@ -300,15 +311,36 @@ const HexagonMap = () => {
         onViewStateChange={(e) => setViewState(e.viewState)}
         controller={true}
         layers={[
-          hexagonLayer,
+          heatmapLayer,
+          // hexagonLayer,
           iconLayer,
           geojsonLayer,
-          seongnamLayer,
+          // seongnamLayer,
           tripsLayer,
         ]}
         onClick={(e) => addCollection(e)}
         getTooltip={({ object }) => {
-          return object && object.properties && object.properties.adm_nm;
+          if (object && object.properties) {
+            if (object.properties.adm_nm) {
+              return object.properties.adm_nm;
+            }
+
+            if (object.properties.message) {
+              return object.properties.message;
+            }
+
+            if (object.properties.name) {
+              return object.properties.name;
+            }
+
+            return;
+          }
+
+          if (object) {
+            if (object.message) {
+              return object.message;
+            }
+          }
         }}
       >
         <Map

@@ -1,0 +1,20 @@
+{
+  "pathGeoJson": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [126.91551620619335, 37.54550193452221],
+            [126.91587886522429, 37.54530783629932],
+            [126.91642721199835, 37.545446657058335]
+          ]
+        }
+      }
+    ]
+  },
+  "coordinates": [126.91597360178524, 37.54509164395099]
+}
