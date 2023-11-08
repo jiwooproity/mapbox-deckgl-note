@@ -6,7 +6,9 @@ import {
   ArcLayer,
   GeoJsonLayer,
   IconLayer,
+  LineLayer,
   PathLayer,
+  PolygonLayer,
   ScatterplotLayer,
   TextLayer,
 } from "@deck.gl/layers";
@@ -23,6 +25,10 @@ import heatmap from "../../datas/sample/heatmap.json";
 import area from "../../datas/sample/area.json";
 import seongnam from "../../datas/custom/korea.json";
 import maskPath from "../../datas/sample/maskPath.json";
+import marker from "../../datas/sample/marker.json";
+
+import koreaJson from "../../datas/sample/korea.json";
+import RealBuilding from "../../datas/seoul/buildingGeoJson.json";
 
 // Util - Coordinates Clipboard
 import { onClipCoordinates } from "../../utils/clipCoordinates";
@@ -36,6 +42,8 @@ const SampleMapbox = () => {
   const [viewState, setViewState] = useState({
     longitude: 126.9176768,
     latitude: 37.5515208,
+    // longitude: 126.975357465175,
+    // latitude: 37.5714243158795,
     zoom: 18,
   });
 
@@ -49,7 +57,6 @@ const SampleMapbox = () => {
 
   // building state
   const [collection, setCollection] = useState([]);
-  const [makeGeoJson, setMakeGeoJson] = useState({});
 
   const [pathCorners, setPathCorners] = useState([]);
 
@@ -60,23 +67,12 @@ const SampleMapbox = () => {
     animation.id = requestAnimationFrame(animate);
   };
 
-  const createBuilding = ({ coordinate }) => {
+  const createCoordiArr = ({ coordinate }) => {
     setCollection((state) => [...state, coordinate]);
-    setMakeGeoJson(() => ({
-      type: "Feature",
-      properties: {
-        name: "asdasd",
-      },
-      geometry: {
-        type: "Polygon",
-        coordinates: [[...collection, coordinate]],
-      },
-    }));
   };
 
   const removeOnContext = (e) => {
     e.preventDefault();
-    setMakeGeoJson({});
     setCollection([]);
   };
 
@@ -87,7 +83,6 @@ const SampleMapbox = () => {
         color: p.color,
       }))
     );
-
     const convertOneArray = [];
     cornerPositions.forEach((position) => convertOneArray.push(...position));
     setPathCorners(convertOneArray);
@@ -136,12 +131,12 @@ const SampleMapbox = () => {
   }, [animation]);
 
   useEffect(() => {
-    console.log(makeGeoJson);
-  }, [makeGeoJson]);
+    console.log(collection);
+  }, [collection]);
 
   const iconLayer = new IconLayer({
     id: "icon-layer",
-    data: [],
+    data: marker,
     pickable: true,
     iconMapping: {
       marker: { x: 0, y: 0, anchorY: 128, width: 128, height: 128, mask: true },
@@ -163,6 +158,7 @@ const SampleMapbox = () => {
     pointType: "text",
     extruded: true,
     getElevation: (f) => f.properties.height || 20,
+    // getElevation: (f) => f.properties.HEIGHT + 10,
     getFillColor: () => [160, 180, 180, 210],
   });
 
@@ -183,6 +179,7 @@ const SampleMapbox = () => {
     trailLength: 180,
     shadowEnabled: false,
     rounded: true,
+    widthScale: 4,
     getPath: (f) => f.path,
     getTimeStamps: (f) => f.timestamps,
     getColor: (f) => f.color,
@@ -194,8 +191,10 @@ const SampleMapbox = () => {
     extruded: false,
     filled: true,
     getLineWidth: () => 0.5,
+    getLineColor: [255, 255, 255],
     getHexagon: (d) => d.hex,
-    getFillColor: (d) => d.color,
+    // getFillColor: (d) => d.color,
+    getFillColor: [255, 255, 255, 10],
   });
 
   const h3HexagonAreaLayer = new H3HexagonLayer({
@@ -234,7 +233,7 @@ const SampleMapbox = () => {
     pickable: true,
     getPath: (f) => f.path,
     getWidth: 1,
-    getColor: [0, 0, 0],
+    getColor: [255, 255, 255],
     opacity: 1,
   });
 
@@ -280,6 +279,19 @@ const SampleMapbox = () => {
     getColor: (f) => f.color,
   });
 
+  const lineLayer = new LineLayer({
+    id: "line-layer",
+    data: arc,
+    getSourcePosition: (f) => [...f.from.coordinates, 500.86],
+    getTargetPosition: (f) => [...f.to.coordinates, 594.36],
+    getColor: (f) => {
+      const z = 500.86;
+      const r = z / 10000;
+
+      return [255 * (1 - r * 2), 128 * r, 255 * r, 255 * (1 - r)];
+    },
+  });
+
   const deckglLayers = [
     buildingLayer,
     h3HexagonLayer,
@@ -289,10 +301,12 @@ const SampleMapbox = () => {
     arcLayer,
     textLayer,
     pathLayer,
-    // heatmapLayer,
+    heatmapLayer,
     scatterLayer,
     maskPathLayer,
     maskGeoJsonLayer,
+    lineLayer,
+    iconLayer,
   ];
 
   const showTooltip = ({ object }) => {
@@ -329,13 +343,14 @@ const SampleMapbox = () => {
       initialViewState={viewState}
       onViewStateChange={(e) => setViewState(e.viewState)}
       layers={[...deckglLayers]}
-      onClick={createBuilding}
+      onClick={createCoordiArr}
       getTooltip={showTooltip}
     >
       <Map
-        mapboxAccessToken={process.env.REACT_APP_MAPBOX_MY_TOKEN}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         // mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
-        mapStyle="mapbox://styles/thing9999/clogri7yp004i01rh28b859xq"
+        // mapStyle="mapbox://styles/thing9999/clogri7yp004i01rh28b859xq"
+        mapStyle="mapbox://styles/dejayspark/clooe4yyg002u01pq92voe0n0"
         style={{ width: "100%", height: "100%" }}
         onLoad={onLoad}
       />
